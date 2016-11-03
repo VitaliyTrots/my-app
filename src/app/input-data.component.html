@@ -1,0 +1,36 @@
+<edit-data [data]="selectedRec"></edit-data>
+<table class="table" border="1">
+    <thead class="tablehead">
+    <tr>
+        <td width="40px" align="center">№</td>
+        <td width="90px" align="center">дата</td>
+        <td width="100px" align="center">машина</td>
+        <td width="150px" align="center">водитель</td>
+        <td width="60px" align="center">вес,<br>т</td>
+        <td width="60px" align="center">пробег,<br>км</td>
+        <td width="60px" align="center">н/ч,<br>час</td>
+        <td width="60px" align="center">д/т,<br>л</td>
+        <td width="60px" align="center">з/п,<br>грн</td>
+        <td width="80px" align="center">итого,<br>грн</td>
+        <td width="80px" align="center">оплата,<br>грн</td>
+        <td width="23px" align="center">X</td>
+    </tr>
+    </thead>
+    <tbody class="tablebody">
+    <tr *ngFor="let rec of dataset" class="tablerow" (click)="onSelect(rec)" [class.selected]="rec === selectedRec">
+        <td width="40px" align="center">{{rec.no}}</td>
+        <td width="90px" align="center">{{rec.date}}</td>
+        <td width="100px" align="center">{{rec.car}}</td>
+        <td width="150px" align="center">{{rec.driver}}</td>
+        <td width="60px" align="center">{{rec.weight}}</td>
+        <td width="60px" align="center">{{rec.km}}</td>
+        <td width="60px" align="center">{{rec.workTime}}</td>
+        <td width="60px" align="center">{{rec.fuel}}</td>
+        <td width="60px" align="center">{{rec.salary}}</td>
+        <td width="80px" align="center">{{rec.cost}}</td>
+        <td width="80px" align="center">{{rec.money}}</td>
+        <td width="23px" align="center"><button [disabled]="editable == -1" (click)="deleteRec(rec)">x</button></td>
+    </tr>
+    </tbody>
+</table>
+<button [disabled]="editable == -1" (click)="newRec()">Новая машина</button>

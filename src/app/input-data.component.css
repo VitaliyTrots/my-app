@@ -1,0 +1,23 @@
+.table {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.tablehead {
+    display: block;
+}
+.tablebody {
+    height: 216px;
+    overflow-y: auto;
+    display: block;
+}
+.tablerow {
+    cursor: pointer;
+}
+.tablerow:hover {
+    background-color: #EEE;
+}
+.selected {
+    background-color: #BBB;
+}

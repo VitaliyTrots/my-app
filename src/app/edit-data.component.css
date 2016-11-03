@@ -1,0 +1,10 @@
+.label {
+    width: 13em;
+    display: inline-block;
+}
+.inputtext {
+    width: 10em;
+}
+.inputnumber {
+    width: 5em;
+}

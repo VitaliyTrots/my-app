@@ -1,3 +1,10 @@
 <h1>
   {{title}}
+  <button class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
+  <button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button>
 </h1>
+<nav>
+  <a routerLink="/input">Ввод данных</a>
+  <a routerLink="/view">Просмотр данных</a>
+</nav>
+<router-outlet></router-outlet>

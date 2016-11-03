@@ -1,0 +1,78 @@
+<h3>Ввод данных, роль пользователя: </h3>
+<span class="label">
+  <label>Номер записи:</label>
+</span>
+<span>
+  <label>{{data?.no}}</label>
+</span>
+<br>
+<span class="label">
+  <label>Дата:</label>
+</span>
+<span *ngIf="data">
+  <input [disabled]="editable == -1" [(ngModel)]="data.date" placeholder="дата ходки" width="5em" type="text" class="inputtext">
+</span>
+<br>
+<span class="label">
+  <label>Номер машины:</label>
+</span>
+<span *ngIf="data">
+  <input [disabled]="editable == -1" [(ngModel)]="data.car" placeholder="номер машины" width="100px" class="inputtext">
+</span>
+<br>
+<span class="label">
+  <label>Водитель:</label>
+</span>
+<span *ngIf="data">
+  <input [disabled]="editable == -1" [(ngModel)]="data.driver" placeholder="водитель" width="100px" class="inputtext">
+</span>
+<br>
+<span class="label">
+  <label>Привезено, тонн:</label>
+</span>
+<span *ngIf="data">
+  <input [disabled]="editable == -1" [(ngModel)]="data.weight" placeholder="тоннаж" width="100px" type="number" min="0" max="50" step="0.02" (keyup)="calc()" class="inputnumber">
+</span>
+<br>
+<span class="label">
+  <label>Пройдено, км:</label>
+</span>
+<span *ngIf="data">
+  <input [disabled]="editable == -1" [(ngModel)]="data.km" placeholder="километраж" width="100px" type="number" min="0" max="200" step="1" (keyup)="calc()" class="inputnumber">
+</span>
+<br>
+<span class="label">
+  <label>Время работы установки, ч:</label>
+</span>
+<span *ngIf="data">
+  <input [disabled]="editable == -1" [(ngModel)]="data.workTime" placeholder="время работы установки" width="100px" type="number" min="0" max="5" step="0.1" (keyup)="calc()" class="inputnumber">
+</span>
+<br>
+<span class="label">
+  <label>Израсходовано топлива, л:</label>
+</span>
+<span *ngIf="data">
+  <input [disabled]="editable < 1" [(ngModel)]="data.fuel" placeholder="расход д/т" width="100px" type="number" min="0" max="200" step="0.1" (keyup)="calc()" class="inputnumber">
+</span>
+<br>
+<span class="label">
+  <label>Зарплата водителю, грн:</label>
+</span>
+<span *ngIf="data">
+  <input [disabled]="editable < 1" [(ngModel)]="data.salary" placeholder="зарплата водителя" width="100px" type="number" min="0" max="5000" step="20" (keyup)="calc()" class="inputnumber">
+</span>
+<br>
+<span class="label">
+  <label>Общие затраты на ходку, грн:</label>
+</span>
+<span *ngIf="data">
+  <input [disabled]="editable < 1" [(ngModel)]="data.cost" placeholder="потрачено денег" width="100px" type="number" min="0" max="5000" step="1" (keyup)="calc()" class="inputnumber">
+</span>
+<br>
+<span class="label">
+  <label>Оплата заказчика, грн:</label>
+</span>
+<span *ngIf="data">
+  <input [disabled]="editable < 1" [(ngModel)]="data.money" placeholder="оплата ходки" width="100px" type="number" min="0" max="5000" step="100" class="inputnumber">
+</span>
+<br>
