@@ -10,8 +10,8 @@ import { Data } from './data';
 
 export class EditDataComponent {
 
+    @Input() editable: number;
     @Input() data: Data;
-    editable: number = 0;
 
     calc() {
         this.data.fuel = Math.round((this.data.km * 0.5 + this.data.workTime * 17) * 10) / 10;

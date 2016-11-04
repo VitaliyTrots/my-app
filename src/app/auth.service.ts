@@ -1,11 +1,22 @@
 import { Injectable }      from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
+
 // Avoid name not found warnings
 declare var Auth0Lock: any;
 
 @Injectable()
 export class Auth {
+
+    // Observable user role
+    private userRole = new Subject<number>();
+    userRole$ = this.userRole.asObservable();
+    public changeUser() {
+        this.userRole.next(this.userProfile == undefined?-1:this.userProfile["role"] == "admin"?1:this.userProfile["role"] == "user"?0:-1);
+    }
+
     // Configure Auth0
     lock = new Auth0Lock('HzkLleYJ3Js0h5rz3pEVOHffcc32Atkr', 'vitaliy.eu.auth0.com', {closable: false});
 
@@ -30,6 +41,7 @@ export class Auth {
 
                 localStorage.setItem('profile', JSON.stringify(profile));
                 this.userProfile = profile;
+                this.changeUser();
             });
         });
     }
@@ -50,5 +62,7 @@ export class Auth {
         localStorage.removeItem('id_token');
         localStorage.removeItem('profile');
         this.userProfile = undefined;
+        this.changeUser();
     };
+
 }

@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { Subscription }   from 'rxjs/Subscription';
 
 import { Data } from './data';
+import { Auth } from './auth.service';
 import { DataService } from './data.service';
 
 @Component({
@@ -9,12 +12,17 @@ import { DataService } from './data.service';
     styleUrls: ['./input-data.component.css']
 })
 
-export class InputDataComponent implements OnInit {
+export class InputDataComponent implements OnInit, OnDestroy {
     dataset: Data[];
     selectedRec: Data;
-    editable: number = 0;
+    editable: number;
+    subscription: Subscription;
 
-    constructor(private dataService: DataService) {
+    constructor(private dataService: DataService, private auth: Auth) {
+        this.subscription = auth.userRole$.subscribe(role => this.editable = role);
+        auth.changeUser();
+        // this.editable = auth.getUserRole();
+        // console.log(JSON.parse(localStorage.getItem('profile')));
     }
 
     getData(): void {
@@ -27,8 +35,18 @@ export class InputDataComponent implements OnInit {
 
     ngOnInit(): void {
         this.getData();
-        setTimeout(() => this.onSelect(this.dataset[0]), 0);
+        // wait a tick first to avoid one-time devMode
+        // unidirectional-data-flow-violation error
+        setTimeout(() => {
+            this.onSelect(this.dataset[0]);
+        }, 0);
     }
+
+    ngOnDestroy() {
+        // prevent memory leak when component destroyed
+        this.subscription.unsubscribe();
+    }
+
 
     onSelect(rec: Data): void {
         this.selectedRec = rec;
