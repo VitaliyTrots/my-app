@@ -40,7 +40,8 @@ import { DataService } from './data.service';
       },
       {
         path: '',
-        component: InputDataComponent
+        redirectTo: '/input',
+        pathMatch: 'full'
       }
     ])
   ],

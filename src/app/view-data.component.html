@@ -1,0 +1,100 @@
+    <select style="width: 46px" name="fltNo" [(ngModel)]="filter.no" (click)="onFilter('no')">
+        <option value=-1>reset</option>
+        <option *ngFor="let no of noms" [ngValue]="no">
+            {{no}}
+        </option>
+    </select>
+    <select style="width: 92px" name="fltDate" [(ngModel)]="filter.date" (click)="onFilter('date')">
+        <option value="">reset</option>
+        <option *ngFor="let date of dates" [ngValue]="date">
+            {{date}}
+        </option>
+    </select>
+    <select style="width: 102px" name="fltCar" [(ngModel)]="filter.car" (click)="onFilter('car')">
+        <option value="">reset</option>
+        <option *ngFor="let car of cars" [ngValue]="car">
+            {{car}}
+        </option>
+    </select>
+    <select style="width: 152px" name="fltDriver" [(ngModel)]="filter.driver" (click)="onFilter('driver')">
+        <option value="">reset</option>
+        <option *ngFor="let driver of drivers" [ngValue]="driver">
+            {{driver}}
+        </option>
+    </select>
+    <select style="width: 62px" name="fltWeight" [(ngModel)]="filter.weight" (click)="onFilter('weight')">
+        <option value=-1>reset</option>
+        <option *ngFor="let weight of weights" [ngValue]="weight">
+            {{weight}}
+        </option>
+    </select>
+    <select style="width: 62px" name="fltKm" [(ngModel)]="filter.km" (click)="onFilter('km')">
+        <option value=-1>reset</option>
+        <option *ngFor="let km of kms" [ngValue]="km">
+            {{km}}
+        </option>
+    </select>
+    <select style="width: 62px" name="fltWorkTime" [(ngModel)]="filter.workTime" (click)="onFilter('workTime')">
+        <option value=-1>reset</option>
+        <option *ngFor="let workTime of workTimes" [ngValue]="workTime">
+            {{workTime}}
+        </option>
+    </select>
+    <select style="width: 62px" name="fltFuel" [(ngModel)]="filter.fuel" (click)="onFilter('fuel')">
+        <option value=-1>reset</option>
+        <option *ngFor="let fuel of fuels" [ngValue]="fuel">
+            {{fuel}}
+        </option>
+    </select>
+    <select style="width: 62px" name="fltSalary" [(ngModel)]="filter.salary" (click)="onFilter('salary')">
+        <option value=-1>reset</option>
+        <option *ngFor="let salary of salaries" [ngValue]="salary">
+            {{salary}}
+        </option>
+    </select>
+    <select style="width: 82px" name="fltCost" [(ngModel)]="filter.cost" (click)="onFilter('cost')">
+        <option value=-1>reset</option>
+        <option *ngFor="let cost of costs" [ngValue]="cost">
+            {{cost}}
+        </option>
+    </select>
+    <select style="width: 82px" name="fltMoney" [(ngModel)]="filter.money" (click)="onFilter('money')">
+        <option value=-1>reset</option>
+        <option *ngFor="let money of moneys" [ngValue]="money">
+            {{money}}
+        </option>
+    </select>
+
+<table class="table" border="1">
+    <thead class="tablehead">
+    <tr>
+        <td width="40px" align="center" (click)="sort('no')">№</td>
+        <td width="90px" align="center" (click)="sort('date')">дата</td>
+        <td width="100px" align="center" (click)="sort('car')">машина</td>
+        <td width="150px" align="center" (click)="sort('driver')">водитель</td>
+        <td width="60px" align="center" (click)="sort('weight')">вес,<br>т</td>
+        <td width="60px" align="center" (click)="sort('km')">пробег,<br>км</td>
+        <td width="60px" align="center" (click)="sort('workTime')">н/ч,<br>час</td>
+        <td width="60px" align="center" (click)="sort('fuel')">д/т,<br>л</td>
+        <td width="60px" align="center" (click)="sort('salary')">з/п,<br>грн</td>
+        <td width="80px" align="center" (click)="sort('cost')">итого,<br>грн</td>
+        <td width="80px" align="center" (click)="sort('money')">оплата,<br>грн</td>
+    </tr>
+    </thead>
+    <tbody class="tablebody">
+    <tr *ngFor="let rec of dataset" class="tablerow">
+        <td width="40px" align="center">{{rec.no}}</td>
+        <td width="90px" align="center">{{rec.date}}</td>
+        <td width="100px" align="center">{{rec.car}}</td>
+        <td width="150px" align="center">{{rec.driver}}</td>
+        <td width="60px" align="center">{{rec.weight}}</td>
+        <td width="60px" align="center">{{rec.km}}</td>
+        <td width="60px" align="center">{{rec.workTime}}</td>
+        <td width="60px" align="center">{{rec.fuel}}</td>
+        <td width="60px" align="center">{{rec.salary}}</td>
+        <td width="80px" align="center">{{rec.cost}}</td>
+        <td width="80px" align="center">{{rec.money}}</td>
+    </tr>
+    </tbody>
+</table>
+<button (click)="show()">show</button>
