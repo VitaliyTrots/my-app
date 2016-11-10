@@ -9,7 +9,8 @@
     "test": "ng test",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
-    "gh-pages2": "del ./node_modules/gh-pages/.cache && gh-pages -d dist -r git@github.com:VitaliyTrots/vitaliytrots.github.io.git -b master"
+    "gh-pages2": "del ./node_modules/gh-pages/.cache && gh-pages -d dist -r git@github.com:VitaliyTrots/vitaliytrots.github.io.git -b master",
+    "test:coverage": "istanbul --include-all-sources cover _mocha -- -R spec '**/*.spec.ts'"
   },
   "private": true,
   "dependencies": {
@@ -45,6 +46,11 @@
     "ts-node": "1.2.1",
     "tslint": "3.13.0",
     "typescript": "~2.0.3",
-    "webdriver-manager": "10.2.5"
+    "webdriver-manager": "10.2.5",
+    "chai": "3.5.0",
+    "mocha": "3.1.2",
+    "sinon": "1.17.6",
+    "should": "11.1.1",
+    "proxyquire": "1.7.10"
   }
 }

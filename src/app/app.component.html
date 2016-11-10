@@ -4,7 +4,7 @@
   <button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button>
 </h1>
 <nav>
-  <a routerLink="/input">Ввод данных</a>
-  <a routerLink="/view">Просмотр данных</a>
+  <a routerLink="/input" routerLinkActive="active">Ввод данных</a>
+  <a routerLink="/view" routerLinkActive="active">Просмотр данных</a>
 </nav>
 <router-outlet></router-outlet>

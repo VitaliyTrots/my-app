@@ -66,7 +66,6 @@ export class ViewDataComponent implements OnInit {
 
       //filter's filling
       for(let c = 0; c < this.dataset.length; c++) {
-        console.log(this.dataset[c].driver);
         if(this.noms.indexOf(this.dataset[c].no) === -1) {
           this.noms.push(this.dataset[c].no);
         }
@@ -144,10 +143,6 @@ export class ViewDataComponent implements OnInit {
       });
       this.curSortField = by;
     }
-  }
-
-  show() {
-    console.log(this.filter);
   }
 
   clearFilter(by: string) {
