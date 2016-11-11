@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Data } from './data';
-import { DataService } from './data.service';
+import { Data } from '../shared/data';
+import { DataService } from '../service/data.service';
 
 @Component({
     selector: 'view-data',
-    templateUrl: './view-data.component.html',
-    styleUrls: ['./view-data.component.css']
+    templateUrl: 'view-data.component.html',
+    styleUrls: ['view-data.component.css']
 })
 
 export class ViewDataComponent implements OnInit {

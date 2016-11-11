@@ -1,13 +1,13 @@
 /* tslint:disable:no-unused-variable */
 
-import {ComponentFixture, TestBed, inject, fakeAsync, tick} from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { By } from '@angular/platform-browser';
 
 import { ViewDataComponent } from './view-data.component';
-import { DataService } from './data.service';
-import { Data } from './data';
+import { DataService } from '../service/data.service';
+import { Data } from '../shared/data';
 
 var dataServiceStub = {
   getData(): Promise<Data[]> {
@@ -62,13 +62,13 @@ describe('ViewDataComponent', () => {
     expect(fixture.debugElement.componentInstance).toBeTruthy();
   });
 
-  it(`should have an eleven select components`, () => {
+  it('should have eleven select components', () => {
     for(let c in FIELDS_ARRAY) {
       expect(fixture.debugElement.query(By.css('[name=flt'+FIELDS_ARRAY[c]+']'))).toBeTruthy();
     }
   });
 
-  it(`should have a table`, () => {
+  it('should have a table', () => {
     expect(fixture.debugElement.query(By.css('table'))).toBeTruthy();
   });
 
@@ -81,7 +81,6 @@ describe('ViewDataComponent', () => {
     expect(comp.dataset).toBeUndefined();
     fixture.detectChanges();
     tick();
-    fixture.detectChanges();
     expect(comp.dataset.length).toBe(2);
   }));
 
@@ -89,7 +88,6 @@ describe('ViewDataComponent', () => {
     let comp = fixture.debugElement.componentInstance;
     fixture.detectChanges();
     tick();
-    fixture.detectChanges();
     for(let c in FIELDS_ARRAY) {
       if(c == "no") {
         expect(comp[c + "ms"].length).toBe(2);
@@ -108,7 +106,6 @@ describe('ViewDataComponent', () => {
     expect(comp.dataset).toBeUndefined();
     fixture.detectChanges();
     tick();
-    fixture.detectChanges();
     for(let c in FIELDS_ARRAY) {
       //sort asc
       comp.sort(c);
@@ -125,7 +122,6 @@ describe('ViewDataComponent', () => {
     for(let c in FIELDS_ARRAY) {
       fixture.detectChanges();
       tick();
-      fixture.detectChanges();
       //set filter
       if(c == "no") {
         comp.filter[c] = comp.noms[0];
@@ -149,12 +145,10 @@ describe('ViewDataComponent', () => {
       //check after tick
       fixture.detectChanges();
       tick();
-      fixture.detectChanges();
       expect(comp.dataset.length).toBe(2);
     };
     fixture.detectChanges();
     tick();
-    fixture.detectChanges();
   }));
 
 });

@@ -2,14 +2,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Subscription }   from 'rxjs/Subscription';
 
-import { Data } from './data';
-import { Auth } from './auth.service';
-import { DataService } from './data.service';
+import { Data } from '../shared/data';
+import { Auth } from '../service/auth.service';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'input-data',
-  templateUrl: './input-data.component.html',
-  styleUrls: ['./input-data.component.css']
+  templateUrl: 'input-data.component.html',
+  styleUrls: ['input-data.component.css']
 })
 
 export class InputDataComponent implements OnInit, OnDestroy {
