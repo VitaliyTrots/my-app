@@ -75,24 +75,43 @@ describe('InputDataComponent', () => {
     expect(fixture.debugElement.query(By.css('table'))).toBeTruthy();
   }));
 
-  it('should button be disabled depending on "editable" attribute', fakeAsync(() => {
+  it('should buttons be disabled depending on "editable" attribute', fakeAsync(() => {
+    comp.ngOnInit();
     comp.editable = -1;
     fixture.detectChanges();
     tick();
+    fixture.detectChanges();
     expect(fixture.debugElement.query(By.css('button')).nativeElement.disabled).toBe(true);
+    expect(fixture.debugElement.query(By.css('tbody')).nativeElement  //table body
+      .childNodes[2]  //first row
+      .childNodes[23] //last column
+      .childNodes[0]  //button in last column
+      .attributes[2]  //disabled='' if defined
+      .name).toBe("disabled");
     comp.editable = 0;
     fixture.detectChanges();
     tick();
     expect(fixture.debugElement.query(By.css('button')).nativeElement.disabled).toBe(false);
+    expect(fixture.debugElement.query(By.css('tbody')).nativeElement  //table body
+      .childNodes[2]  //first row
+      .childNodes[23] //last column
+      .childNodes[0]  //button in last column
+      .attributes[2]).toBeUndefined();
     comp.editable = 1;
     fixture.detectChanges();
     tick();
     expect(fixture.debugElement.query(By.css('button')).nativeElement.disabled).toBe(false);
+    expect(fixture.debugElement.query(By.css('tbody')).nativeElement  //table body
+      .childNodes[2]  //first row
+      .childNodes[23] //last column
+      .childNodes[0]  //button in last column
+      .attributes[2]).toBeUndefined();
   }));
 
   it('should set data array with 2 rows', fakeAsync(() => {
     let comp = fixture.debugElement.componentInstance;
     expect(comp.dataset).toBeUndefined();
+    comp.editable = 1;
     comp.ngOnInit();
     fixture.detectChanges();
     tick();
